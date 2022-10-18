@@ -1,0 +1,92 @@
+body {
+  background-color: #fafafa;
+}
+
+.search-container {
+  margin-top: 200px;
+  position: relative;
+  margin-left: 70px;
+}
+
+.search {
+  border-top-right-radius: 32px !important;
+  border-bottom-right-radius: 32px !important;
+  background-color: #fff;
+  height: 62px;
+  width: 80px;
+  color: white;
+}
+
+.search-background {
+  background-color: #1ca6c7;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.search-background:hover {
+  background-color: #083f4d;
+}
+
+.nasdaq-logo {
+  border-top-left-radius: 32px !important;
+  border-bottom-left-radius: 32px !important;
+  background-color: #fff;
+}
+
+.input-group-prepend {
+  margin-right: -2px !important;
+}
+
+.input-group-append {
+  margin-left: -2px !important;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ced4da;
+  outline: 0;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.form-control {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+.submit-button {
+  border: none;
+  padding: 0;
+}
+
+.search-results {
+  position: absolute;
+  margin-left: 70px;
+}
+
+.search-result {
+  border-bottom: 1px solid #ced4da;
+  height: 30px;
+  margin-top: 5px;
+  list-style: none;
+  text-decoration-line: none;
+}
+
+.search-result a {
+  color: #1ca6c7;
+  text-decoration: none;
+}
+
+.results-box {
+  height: auto;
+  background-color: white;
+  box-shadow: 4px 7px 5px 0px rgba(138, 130, 130, 0.6);
+}
+
+#results-loader {
+  display: none;
+}
+
+#results-loader:active {
+  display: block;
+}
