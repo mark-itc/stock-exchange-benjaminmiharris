@@ -110,22 +110,22 @@ body {
   margin-top: 10px;
 }
 
-/* .marquee {
-  width: 100%;
-  background-color: violet;
+.marquee {
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .marquee div {
   margin-top: 10px;
-  animation: animate 10s linear infinite;
-  padding-left: 100%;
-  display: inline-block;
+  animation: scrolling 10s linear infinite;
+  margin-left: 30px;
 }
 
-@keyframes animate {
-  100% {
-    transform: translate(-100%, 0);
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
   }
-} */
+  100% {
+    transform: translatex(-1000px);
+  }
+}
