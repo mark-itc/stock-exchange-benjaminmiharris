@@ -1,54 +1,6 @@
-class StockExchangeCompaniesSearchResult {
-    constructor(searchResult){
-        this.company = searchResult.name;  
-        this.symbol = searchResult.symbol;
-    }
-    
-    createResult(){
-        const resultDiv = document.createElement('li'); 
-        resultDiv.classList = 'search-result';
+import {StockExchangeCompanyDetails} from './companyScript.js'; 
 
-
-        const resultLink = document.createElement('a'); 
-
-        resultLink.href = `/company.html?symbol=${this.symbol}`; 
-
-        resultLink.innerHTML = `${this.company} (${this.symbol})`; 
-
-
-        resultDiv.appendChild(resultLink)
-
-        
-        return resultsContainer.appendChild(resultDiv)
-    }
-    
-}
-
-
-async function getStockExchangeSearch (url){
-    try {
-
-        const response = await fetch(url); 
-        const results = await response.json(); 
-    
-    
-        results.forEach((item) => {
-            const searchResult = new StockExchangeCompaniesSearchResult(item); 
-            searchResult.createResult(); 
-        });
-    
-        hideLoader();
-
-    } catch (e) {
-        console.error(e)
-    }
-
-
-}
-
-
-
-
+import {GETCompanyDetails} from './helperfunctions.js'; 
 
 
 
@@ -56,21 +8,85 @@ const searchButton = document.getElementById('submit-button');
 const searchInput = document.getElementById('search-input');
 const resultsContainer = document.getElementById('results-box'); 
 
-searchButton.addEventListener('click', stockExchangeResults); 
 
 
+class StockExchangeCompaniesSearchResult {
+    constructor(searchResult){
+        this.company = searchResult.name;  
+        this.symbol = searchResult.symbol;
+        this.exchangeShortName = searchResult.exchangeShortName;
+    }
+    
+    createResult(companyDetails){
 
-function stockExchangeResults(){
+        
+        const resultDiv = document.createElement('li'); 
+        resultDiv.classList = 'search-result';
 
-    clearPreviousResults();
+        const resultLink = document.createElement('a'); 
 
-    showLoader();
+        resultLink.href = `http://127.0.0.1:5500/.github/company.html?symbol=${this.symbol}`; 
 
 
-    getStockExchangeSearch(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${searchInput.value}&amp;limit=10&amp;exchange=NASDAQ`);
+        const companyPriceChange = companyDetails.changes; 
+
+        if (companyPriceChange >= 0) {
+            resultLink.innerHTML = `<img src="${companyDetails.image}" alt="company-logo" height="25">${this.company}<span style="color:grey; font-size: 10px;">(${this.exchangeShortName})</span><span style="color:green; font-size: 10px;">(${companyPriceChange})</span>`;
+        } else {
+            resultLink.innerHTML = `<img src="${companyDetails.image}" alt="company-logo" height="25">${this.company}<span style="color:grey; font-size: 10px;">(${this.exchangeShortName})</span> <span style="color:red; font-size: 10px;">(${companyPriceChange})</span> `;
+        }
+
+
+    
+
+        resultDiv.appendChild(resultLink);
+
+
+        if (companyPriceChange >= 0) {
+            resultLink.classList = "postive-price";
+        } else {
+            resultLink.classList = "negative-price";
+        }
+
+        
+        return resultsContainer.appendChild(resultDiv)
+    }
 
     
 }
+
+
+searchButton.addEventListener('click', async (e) => {
+    e.preventDefault(); 
+    clearPreviousResults();
+    showLoader();
+
+    const url = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${searchInput.value}&amp;limit=10&amp;exchange=NASDAQ`
+
+    try {
+
+        const response = await fetch(url); 
+        const results = await response.json(); 
+
+    
+    
+        results.forEach((item) => {
+            const searchResult = new StockExchangeCompaniesSearchResult(item);
+            GETCompanyDetails(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${item.symbol}`).then((response) => {
+            
+                searchResult.createResult(response);    
+            });
+            
+        });
+    
+        hideLoader();
+
+    } catch (e) {
+        console.error("Type1 Error", e)
+    }
+
+
+}); 
 
 
 function clearPreviousResults(){
@@ -91,3 +107,21 @@ function hideLoader() {
 
 
 
+// marquee functions
+
+// async function GETMarqueeResults (){
+
+//     const response = await fetch ("https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock-screener?exchange=NASDAQ&limit=${100}"); 
+
+//     const results = await response.json(); 
+
+
+
+//     results.forEach((item) => {
+        
+//         })
+
+
+// }
+
+// GETMarqueeResults();
