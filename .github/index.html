@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Stock Exchange</title>
 
     <!-- Bootstrap css -->
     <link
@@ -24,26 +24,36 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="container d-flex justify-content-center search-container">
-      <div class="input-group col-sm-7 input-group-lg">
-        <div class="input-group-prepend">
-          <span class="input-group-text nasdaq-logo"
-            ><img
-              src="./images /Event Thumbnails 400x421 @ 1200x1263 (2).png"
-              width="46"
-          /></span>
-        </div>
-        <input type="text" class="form-control" id="search-input" />
+    <!-- <div class="d-flex marquee">
+      <div id="marquee-results">I love dev.</div>
+    </div> -->
+    <form>
+      <div class="container d-flex justify-content-center search-container">
+        <div class="input-group col-sm-7 input-group-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text nasdaq-logo"
+              ><img
+                src="./images /Event Thumbnails 400x421 @ 1200x1263 (2).png"
+                width="46"
+            /></span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="search-input"
+            placeholder="Search here"
+          />
 
-        <div class="input-group-append">
-          <button type="button" class="submit-button" id="submit-button">
-            <span class="input-group-text search"
-              ><i class="fa-solid fa-magnifying-glass search-background"></i
-            ></span>
-          </button>
+          <div class="input-group-append">
+            <button type="submit" class="submit-button" id="submit-button">
+              <span class="input-group-text search"
+                ><i class="fa-solid fa-magnifying-glass search-background"></i
+              ></span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
 
     <div class="container d-flex justify-content-center search-results">
       <div class="col-sm-10 results-box" id="results-box"></div>
@@ -56,6 +66,6 @@
     </div>
 
     <!-- JS Files -->
-    <script src="./script/script.js"></script>
+    <script type="module" src="./script/script.js"></script>
   </body>
 </html>

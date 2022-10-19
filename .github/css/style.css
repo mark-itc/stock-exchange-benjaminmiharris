@@ -39,6 +39,8 @@ body {
 
 .input-group-append {
   margin-left: -2px !important;
+  border-top-right-radius: 32px !important;
+  border-bottom-left-radius: 32px !important;
 }
 
 .form-control:focus {
@@ -66,8 +68,8 @@ body {
 
 .search-result {
   border-bottom: 1px solid #ced4da;
-  height: 30px;
-  margin-top: 5px;
+  height: 40px;
+  margin: 10px;
   list-style: none;
   text-decoration-line: none;
 }
@@ -77,16 +79,53 @@ body {
   text-decoration: none;
 }
 
-.results-box {
-  height: auto;
-  background-color: white;
-  box-shadow: 4px 7px 5px 0px rgba(138, 130, 130, 0.6);
+.search-result img {
+  margin: 5px;
 }
 
+.results-box {
+  height: auto;
+  width: auto;
+  background-color: white;
+  box-shadow: 1px 20px 24px -4px rgba(0, 0, 0, 0.75);
+}
+
+#stockprice-loader,
 #results-loader {
   display: none;
 }
 
+#stockprice-loader:active,
 #results-loader:active {
   display: block;
 }
+
+.company-image img {
+  height: 80px;
+}
+
+.company-website-link {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* .marquee {
+  width: 100%;
+  background-color: violet;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marquee div {
+  margin-top: 10px;
+  animation: animate 10s linear infinite;
+  padding-left: 100%;
+  display: inline-block;
+}
+
+@keyframes animate {
+  100% {
+    transform: translate(-100%, 0);
+  }
+} */
