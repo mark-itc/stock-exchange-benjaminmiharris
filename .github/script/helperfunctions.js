@@ -11,3 +11,5 @@ export async function GETCompanyDetails(url){
         console.log(e);
     }
 }
+
+
