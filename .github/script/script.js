@@ -4,6 +4,7 @@ import {GETCompanyDetails} from './helperfunctions.js';
 
 
 
+
 const searchButton = document.getElementById('submit-button'); 
 const searchInput = document.getElementById('search-input');
 const resultsContainer = document.getElementById('results-box'); 
@@ -105,32 +106,3 @@ function hideLoader() {
 }
 
 
-
-
-// marquee functions
-
-async function GETMarqueeResults (){
-
-    const response = await fetch ("https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock-screener?exchange=NASDAQ&limit=${100}"); 
-
-    const results = await response.json(); 
-
-    console.log(results); 
-
-    const marquee = document.getElementById('marquee-container');
-
-    results.forEach((results) => {
-
-        const marqueText = document.createElement('div'); 
-        marqueText.className = 'marquee-results';
-        
-        marqueText.innerHTML = `${results.symbol} <span style="color:green;"> $${results.price}</span>`;
-
-        marquee.appendChild(marqueText);
-        
-        });
-
-
-};
-
-GETMarqueeResults();
