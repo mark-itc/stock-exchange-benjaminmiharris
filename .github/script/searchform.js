@@ -93,7 +93,7 @@ class SearchForm {
     async queryNasdaq(query) {
 
 
-        const url = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${query}&amp;limit=10&amp;exchange=NASDAQ`
+        const url = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${query}&limit=10&;exchange=NASDAQ`
         
         try {
     
@@ -130,4 +130,10 @@ class SearchForm {
     
      
 }
+
+
+
+
+
+
 
