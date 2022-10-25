@@ -1,6 +1,4 @@
-import {GETCompanyDetails} from './helperfunctions.js'
-
-export class StockExchangeCompanyDetails {
+class StockExchangeCompanyDetails {
     constructor(company){
         this.image = company.image; 
         this.name = company.companyName; 
@@ -77,6 +75,9 @@ export class StockExchangeCompanyDetails {
 
     }
 
+
+    
+
      
 
 }
@@ -99,6 +100,19 @@ GETCompanyDetails(`https://stock-exchange-dot-full-stack-course-services.ew.r.ap
 });
 
 
+async function GETCompanyDetails(url){
+
+    try{
+        const response = await fetch (url); 
+        const results = await response.json();
+        const dataFeed = await results.profile;
+
+        return dataFeed;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 
 
@@ -108,7 +122,7 @@ GETCompanyStockpriceHistory(`https://stock-exchange-dot-full-stack-course-servic
 
 async function GETCompanyStockpriceHistory(url){
 
-    // showStocksLoader();
+    showStocksLoader();
 
 
     const dates = []; 
@@ -140,7 +154,7 @@ async function GETCompanyStockpriceHistory(url){
         console.log(e);
     }
 
-    // hideStocksLoader();
+    hideStocksLoader();
 
 
     let myChart = document.getElementById('myChart').getContext('2d');
