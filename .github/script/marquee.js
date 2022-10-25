@@ -1,42 +1,33 @@
-class MarqueeItem {
-    constructor(data){
-        this.companySymbol = data.symbol;
-        this.companyStockPrice = data.price;
+class Marquee {    
+
+    constructor(param){
+        this.container = param;
     }
 
-    createMarqueeItemInDOM(){
+    async load(){
 
-        const marquee = document.getElementById('marquee-container');
+        try {
+            const response = await fetch('https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock-screener?exchange=NASDAQ&limit=${100}')
 
+        const marquee = this.container;
 
-        const marqueText = document.createElement('div'); 
+        const results = await response.json(); 
+
+        results.forEach((item) => {
+            const marqueText = document.createElement('div'); 
         marqueText.className = 'marquee-results';
         
-        marqueText.innerHTML = `${this.companySymbol} <span style="color:green;"> $${this.companyStockPrice}</span>`;
+        marqueText.innerHTML = `${item.symbol} <span style="color:green;"> $${item.price}</span>`;
 
         marquee.appendChild(marqueText);
+        })
+
+        } catch (error) {
+            console.log(error)
+            
+        }
+      
         
     }
-}
-
-
-const marqueeData = await GETMarqueeResultsNew("https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock-screener?exchange=NASDAQ&limit=${100}"); 
-
-marqueeData.forEach((item) => {
-    const newTester = new MarqueeItem(item);
-    newTester.createMarqueeItemInDOM();
-});
-
-
-async function GETMarqueeResultsNew(url){
-
-    try{
-        const response = await fetch (url); 
-        const results = await response.json();
-
-        return results;
-
-    } catch (e) {
-        console.log(e);
-    }
+   
 }

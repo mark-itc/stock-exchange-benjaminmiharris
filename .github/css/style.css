@@ -1,11 +1,19 @@
 body {
   background-color: #fafafa;
+  width: 100vw;
 }
 
 .search-container {
-  margin-top: 200px;
+  margin-top: 350px;
   position: relative;
-  margin-left: 70px;
+}
+
+.input-group:hover {
+  border-radius: 50%;
+  transition-timing-function: ease;
+  transition-duration: 1s;
+
+  box-shadow: 1px 2px 24px 8px rgba(138, 134, 134, 0.3);
 }
 
 .search {
@@ -34,13 +42,12 @@ body {
 }
 
 .input-group-prepend {
-  margin-right: -2px !important;
+  margin-right: -5px !important;
+  border-radius: 50%;
 }
 
 .input-group-append {
-  margin-left: -2px !important;
-  border-top-right-radius: 32px !important;
-  border-bottom-left-radius: 32px !important;
+  margin-left: -5px !important;
 }
 
 .form-control:focus {
@@ -59,6 +66,8 @@ body {
 .submit-button {
   border: none;
   padding: 0;
+  background-color: #fafafa;
+  border-radius: 50%;
 }
 
 .search-results {
@@ -113,6 +122,8 @@ body {
 .marquee {
   text-transform: uppercase;
   white-space: nowrap;
+  position: fixed;
+  top: 5px;
 }
 
 .marquee div {
