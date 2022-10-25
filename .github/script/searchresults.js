@@ -4,6 +4,7 @@ class SearchResults {
         array.forEach((item) => {
             this.GETCompanyResultsNew(item)
         })
+
     }
 
 
@@ -24,8 +25,23 @@ class SearchResults {
     }
     
     renderResults(companyDetails){
+
+        let searched = document.getElementById('search-input').value.trim();
+
         const resultsContainer = document.getElementById('results-box'); 
 
+        const companyPriceChange = companyDetails.profile.changes; 
+
+        const companySymbol = companyDetails.symbol;
+
+        let companyName = companyDetails.profile.companyName;
+
+        let companyShortName = companyDetails.profile.exchangeShortName;
+
+        if (companyName.includes(searched)) {
+            companyName = `<mark>${companyName}</mark>`; 
+            companyShortName = `<mark>${companyShortName}</mark>`
+        } 
         
         const resultDiv = document.createElement('li'); 
         resultDiv.classList = 'search-result';
@@ -33,17 +49,15 @@ class SearchResults {
 
         const resultLink = document.createElement('a'); 
 
-        resultLink.href = `http://127.0.0.1:5500/.github/company.html?symbol=${companyDetails.symbol}`; 
+        resultLink.href = `http://127.0.0.1:5500/.github/company.html?symbol=${companySymbol}`; 
 
 
-        const companyPriceChange = companyDetails.profile.changes; 
 
         if (companyPriceChange >= 0) {
-            resultLink.innerHTML = `<img src="${companyDetails.profile.image}" alt="company-logo" height="25">${companyDetails.profile.companyName}<span style="color:grey; font-size: 10px;">(${companyDetails.profile.exchangeShortName})</span><span style="color:green; font-size: 10px;">(${companyPriceChange})</span>`;
+            resultLink.innerHTML = `<img src="${companyDetails.profile.image}" alt="company-logo" height="25">${companyName}<span style="color:grey; font-size: 10px;">(${companyShortName})</span><span style="color:green; font-size: 10px;">(${companyPriceChange})</span>`;
         } else {
-            resultLink.innerHTML = `<img src="${companyDetails.profile.image}" alt="company-logo" height="25">${companyDetails.profile.companyName}<span style="color:grey; font-size: 10px;">(${companyDetails.profile.exchangeShortName})</span> <span style="color:red; font-size: 10px;">(${companyPriceChange})</span> `;
+            resultLink.innerHTML = `<img src="${companyDetails.profile.image}" alt="company-logo" height="25">${companyName}<span style="color:grey; font-size: 10px;">(${companyShortName})</span> <span style="color:red; font-size: 10px;">(${companyPriceChange})</span> `;
         }
-
 
         resultDiv.appendChild(resultLink);
 
@@ -58,13 +72,11 @@ class SearchResults {
         
         resultsContainer.appendChild(resultDiv); 
 
-        this.searchHighlighter();
+
 
     }
 
-    searchHighlighter() {
-        let searchResults = document.querySelectorAll('li')
-    }
+
 
     
 }
