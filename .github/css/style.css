@@ -1,0 +1,142 @@
+body {
+  background-color: #fafafa;
+  width: 100vw;
+}
+
+.search-container {
+  margin-top: 350px;
+  position: relative;
+}
+
+.input-group:hover {
+  border-radius: 50%;
+  transition-timing-function: ease;
+  transition-duration: 1s;
+
+  box-shadow: 1px 2px 24px 8px rgba(138, 134, 134, 0.3);
+}
+
+.search {
+  border-top-right-radius: 32px !important;
+  border-bottom-right-radius: 32px !important;
+  background-color: #fff;
+  height: 62px;
+  width: 80px;
+  color: white;
+}
+
+.search-background {
+  background-color: #1ca6c7;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.search-background:hover {
+  background-color: #083f4d;
+}
+
+.nasdaq-logo {
+  border-top-left-radius: 32px !important;
+  border-bottom-left-radius: 32px !important;
+  background-color: #fff;
+}
+
+.input-group-prepend {
+  margin-right: -5px !important;
+  border-radius: 50%;
+}
+
+.input-group-append {
+  margin-left: -5px !important;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ced4da;
+  outline: 0;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.form-control {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+.submit-button {
+  border: none;
+  padding: 0;
+  background-color: #fafafa;
+  border-radius: 50%;
+}
+
+.search-results {
+  position: absolute;
+  margin-left: 70px;
+}
+
+.search-result {
+  border-bottom: 1px solid #ced4da;
+  height: 40px;
+  margin: 10px;
+  list-style: none;
+  text-decoration-line: none;
+}
+
+.search-result a {
+  color: #1ca6c7;
+  text-decoration: none;
+}
+
+.search-result img {
+  margin: 5px;
+}
+
+.results-box {
+  height: auto;
+  width: auto;
+  background-color: white;
+  box-shadow: 1px 20px 24px -4px rgba(0, 0, 0, 0.75);
+}
+
+#stockprice-loader,
+#results-loader {
+  display: none;
+}
+
+#stockprice-loader:active,
+#results-loader:active {
+  display: block;
+}
+
+.company-image img {
+  height: 80px;
+}
+
+.company-website-link {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.marquee {
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: fixed;
+  top: 5px;
+}
+
+.marquee div {
+  margin-top: 10px;
+  animation: scrolling 10s linear infinite;
+  margin-left: 30px;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translatex(-1000px);
+  }
+}
